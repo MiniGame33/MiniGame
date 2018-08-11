@@ -18,9 +18,6 @@ public class LoadMgr : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) 
-        {
-            SceneManager.LoadScene("Test");
-        }
+
     }
 }
