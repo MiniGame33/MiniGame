@@ -11,10 +11,6 @@ public class ReadTest : MonoBehaviour
 
     private void Start()
     {
-
-        StartCoroutine(ReadConfigFile("ExcelATest1.msconfig"));
-        StartCoroutine(ReadConfigFile("ExcelATest2.msconfig"));
-        StartCoroutine(ReadConfigFile("ExcelBTest1.msconfig"));
         StartCoroutine(ReadConfigFile("Global.msconfig"));
 
     }

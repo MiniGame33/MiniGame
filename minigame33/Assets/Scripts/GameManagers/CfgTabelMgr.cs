@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
+using System;
 
 public class CfgTabelMgr : MonoBehaviour {
     public static CfgTabelMgr _instance;
     int loadStep = 0;
-    string fileNameStr = ".msconfig";
+    string fileNameStr = ".json";
     // Use this for initialization
     void Awake () {
         _instance = this;
@@ -24,9 +25,12 @@ public class CfgTabelMgr : MonoBehaviour {
         while (www.isDone == false) yield return null;
         if (www.error == null)
         {
-            byte[] data = www.bytes;
-            List<ConfigClass> datalist = (List<ConfigClass>)ExcelTool.DeserializeObj(data);
-            CfgTabelData.GetInstance().WriteData(tablename, datalist);
+            string data = www.text;
+            Type t = Type.GetType("Deserialize" + tablename);
+            DeserializeClass cfgDeserializeClass = Activator.CreateInstance(Type.GetType("Deserialize" + tablename)) as DeserializeClass;
+            cfgDeserializeClass = JsonUtility.FromJson<DeserializeClass>(data);
+            List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
+            CfgTabelData.GetInstance().WriteData(tablename, cfgList);
         }
         else
         {
@@ -57,7 +61,7 @@ public class CfgTabelData
         public ConfigClass getDataByID(int _id) {
             for (int i = 0; i < data.Count; i++)
             {
-                if (data[i].id == _id.ToString())
+                if (data[i].id == _id)
                 {
                     return data[i];
                 }

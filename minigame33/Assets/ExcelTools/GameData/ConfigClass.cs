@@ -8,7 +8,7 @@ using LitJson;
 [Serializable]
 public class ConfigClass
 {
-    public string id;
+    public int id;
     public void LogData() {
         Debug.Log(JsonMapper.ToJson(this));
     }
@@ -18,5 +18,18 @@ public class ConfigClass
 public class Global : ConfigClass
 {
     public string version;
-    public string test1;
+    public bool isDebug;
+    public double speed;
+}
+
+[Serializable]
+public class DeserializeClass
+{
+    public Global[] cfgArray;
+}
+
+[Serializable]
+public class DeserializeGlobal : DeserializeClass
+{
+    public new Global[] cfgArray;
 }

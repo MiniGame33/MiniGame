@@ -13,8 +13,8 @@ using System.Collections.Generic;
 // 消息事件类，使用中传递的信息  
 public class NotifyEvent
 {
-    protected Dictionary<string, string> arguments;  //参数  
     protected string type;  //事件类型  
+    protected object detail;  //参数  
     protected System.Object sender;    //发送者  
 
     // bean函数  
@@ -24,10 +24,10 @@ public class NotifyEvent
         set { type = value; }
     }
 
-    public Dictionary<string, string> Params
+    public object Details
     {
-        get { return arguments; }
-        set { arguments = value; }
+        get { return detail; }
+        set { detail = value; }
     }
 
     public System.Object Sender
@@ -44,34 +44,20 @@ public class NotifyEvent
 
     public NotifyEvent Clone()
     {
-        return new NotifyEvent(type, arguments, sender);
+        return new NotifyEvent(type,sender,detail);
     }
 
     // 构造函数  
-    public NotifyEvent(string type, System.Object sender)
+    public NotifyEvent(string type, System.Object sender ,object detail = null)
     {
         Type = type;
         Sender = sender;
-        if (arguments == null)
-        {
-            arguments = new Dictionary<string, string>();
-        }
-    }
-
-    public NotifyEvent(string type, Dictionary<string, string> args, System.Object sender)
-    {
-        Type = type;
-        arguments = args;
-        Sender = sender;
-        if (arguments == null)
-        {
-            arguments = new Dictionary<string, string>();
-        }
+        Details = detail;
     }
 }
 
 // 消息监听者，这是一个delegate，也就是一个函数，当事件触发时，对应注册的delegate就会触发  
-public delegate void EventListenerDelegate(System.Object data);
+public delegate void EventListenerDelegate(NotifyEvent _event = null);
 
 // 消息中心  
 public class NotifacitionCenter
@@ -93,7 +79,7 @@ public class NotifacitionCenter
 
 
     // 注册监视  
-    public void registerObserver(string type, EventListenerDelegate listener)
+    public void On(string type, EventListenerDelegate listener)
     {
         if (listener == null)
         {
@@ -110,7 +96,7 @@ public class NotifacitionCenter
     }
 
     // 移除监视  
-    public void removeObserver(string type, EventListenerDelegate listener)
+    public void Off(string type, EventListenerDelegate listener)
     {
         if (listener == null)
         {
@@ -129,7 +115,7 @@ public class NotifacitionCenter
     }
 
     // 消息触发  
-    public void postNotification(string type, System.Object sender, System.Object data = null)
+    public void Emit(string type, System.Object sender, NotifyEvent _event = null)
     {
         EventListenerDelegate listenerDelegate;
         if (notifications.TryGetValue(type, out listenerDelegate))
@@ -137,7 +123,7 @@ public class NotifacitionCenter
             try
             {
                 // 执行调用所有的监听者  
-                listenerDelegate(data);
+                listenerDelegate(_event);
             }
             catch (System.Exception e)
             {

@@ -7,6 +7,8 @@ using Excel;
 using System.Data;
 
 using System.Runtime.Serialization.Formatters.Binary;
+using LitJson;
+using UnityEditor;
 
 public class ExcelTool
 {
@@ -111,6 +113,14 @@ public class ExcelTool
                 {
                     info.SetValue(o, float.Parse(val));
                 }
+                else if (info.FieldType == typeof(double))
+                {
+                    info.SetValue(o, double.Parse(val));
+                }
+                else if (info.FieldType == typeof(bool))
+                {
+                    info.SetValue(o, bool.Parse(val));
+                }
                 else
                 {
                     info.SetValue(o, val);
@@ -122,7 +132,7 @@ public class ExcelTool
 
         }
 
-        SaveTableData(datalist, result.TableName + ".msconfig");
+        SaveTableData(datalist, result.TableName + ".json");
         return true;
     }
 
@@ -136,8 +146,11 @@ public class ExcelTool
     {
 
         byte[] dicdata = SerializeObj(datalist);
+        string data = JsonMapper.ToJson(datalist);
+        //Debug.Log(data);
         //WriteByteToFile(gzipData,tablename);
-        WriteByteToFile(dicdata, SaveConfigFilePath(tablename));
+        WriteJsonToFile(data, SaveConfigFilePath(tablename));
+        //WriteByteToFile(dicdata, SaveConfigFilePath(tablename));
     }
 
     /// <summary>
@@ -184,6 +197,22 @@ public class ExcelTool
         FileStream fs = new FileStream(path, FileMode.Create);
         fs.Write(data, 0, data.Length);
         fs.Close();
+    }
+
+    /// <summary>
+    /// json数据写入文件 Writes the byte to file.
+    /// </summary>
+    /// <param name="data">Data.</param>
+    /// <param name="tablename">path.</param>
+    public static void WriteJsonToFile(string data, string path)
+    {
+
+        FileInfo fs = new FileInfo(path);
+        StreamWriter sw = fs.CreateText();
+        sw.WriteLine("{ \"cfgArray\" : " + data + "}");
+        sw.Close();
+        sw.Dispose();
+        AssetDatabase.Refresh();
     }
 
     /// <summary>
