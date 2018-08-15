@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LoadMgr : MonoBehaviour {
     public static LoadMgr _instance;
-
+    public int loadNum = 1;
+    public GameObject Gm;
     private void Awake()
     {
         _instance = this;
+        DontDestroyOnLoad(Gm);
     }
-
-    // Use this for initialization
-    void Start () {
-
-	}
 
     private void Update()
     {
-
+        if (loadNum <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }

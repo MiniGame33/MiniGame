@@ -11,10 +11,10 @@ public class CfgTabelMgr : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         _instance = this;
-        StartCoroutine("ReadConfigFile", "Global");
+        StartCoroutine("ReadConfigFileGlobal", "Global");
     }
 
-    IEnumerator ReadConfigFile(string tablename)
+    IEnumerator ReadConfigFileGlobal(string tablename)
     {
         loadStep++;
         string filename = tablename + fileNameStr;
@@ -26,22 +26,19 @@ public class CfgTabelMgr : MonoBehaviour {
         if (www.error == null)
         {
             string data = www.text;
-            Type t = Type.GetType("Deserialize" + tablename);
-            DeserializeClass cfgDeserializeClass = Activator.CreateInstance(Type.GetType("Deserialize" + tablename)) as DeserializeClass;
-            cfgDeserializeClass = JsonUtility.FromJson<DeserializeClass>(data);
+            DeserializeGlobal cfgDeserializeClass = JsonUtility.FromJson<DeserializeGlobal>(data);
             List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
             CfgTabelData.GetInstance().WriteData(tablename, cfgList);
         }
         else
         {
-            //GameLogTools.SetText("wwwError<<" + www.error + "<<" + filepath);
             Debug.LogError("wwwError<<" + www.error + "<<" + filepath);
         }
 
         loadStep--;
         if (loadStep <= 0)
         {
-            CfgTabelData.GetInstance().LogDataByTableName(tablename);
+            LoadMgr._instance.loadNum--; 
         }
     }
 }

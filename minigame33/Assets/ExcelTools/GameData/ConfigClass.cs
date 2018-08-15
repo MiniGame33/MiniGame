@@ -19,13 +19,13 @@ public class Global : ConfigClass
 {
     public string version;
     public bool isDebug;
-    public double speed;
+    public float bgRoteSpeed;
 }
 
 [Serializable]
 public class DeserializeClass
 {
-    public Global[] cfgArray;
+    public ConfigClass[] cfgArray;
 }
 
 [Serializable]
