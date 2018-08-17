@@ -33,21 +33,25 @@ public class CameraGy : MonoBehaviour {
         //transform.position += new Vector3(10* Input.gyro.gravity.x - lastGy.x,10 * Input.gyro.gravity.y - lastGy.y,0);
         //float _x = transform.position.x;
         //float _y = transform.position.y;
-        //if (_y > 16) {
-        //    _y = 16;
-        //}
-        //else if (_y < 14) {
-        //    _y = 14;
-        //}
-        //if (_x > 1)
-        //{
-        //    _x = 1;
-        //}
-        //else if (_x < -1)
-        //{
-        //    _x = -1;
-        //}
-        transform.position = new Vector3(Input.gyro.gravity.x * 10, (Input.gyro.gravity.y + 0.8f) * 10 + 15f, transform.position.z);
+        float _x = Input.gyro.gravity.x * 5;
+        float _y = (Input.gyro.gravity.y + 0.8f) * 5 + 15f;
+        if (_y > 16)
+        {
+            _y = 16;
+        }
+        else if (_y < 14)
+        {
+            _y = 14;
+        }
+        if (_x > 1)
+        {
+            _x = 1;
+        }
+        else if (_x < -1)
+        {
+            _x = -1;
+        }
+        transform.position = new Vector3(_x, _y, transform.position.z);
         transform.LookAt(cameraPoint.transform);
     }
 }
