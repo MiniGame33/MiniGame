@@ -10,6 +10,7 @@ public class LoadMgr : MonoBehaviour {
     private void Awake()
     {
         _instance = this;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         DontDestroyOnLoad(Gm);
     }
 

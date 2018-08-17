@@ -18,7 +18,7 @@ public class CfgTabelMgr : MonoBehaviour {
     {
         loadStep++;
         string filename = tablename + fileNameStr;
-        string filepath = ExcelTool.GetConfigFilePath(filename);
+        string filepath = GetConfigFilePath(filename);
 
         WWW www = new WWW(filepath);
         yield return www;
@@ -40,6 +40,24 @@ public class CfgTabelMgr : MonoBehaviour {
         {
             LoadMgr._instance.loadNum--; 
         }
+    }
+    public static string GetConfigFilePath(string tablename)
+    {
+        string src = "";
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            src = "jar:file://" + Application.dataPath + "!/assets/Config/" + tablename;
+        }
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            src = "file://" + Application.dataPath + "/Raw/Config/" + tablename;
+        }
+        else
+        {
+            src = "file://" + Application.streamingAssetsPath + "/Config/" + tablename;
+        }
+        return src;
     }
 }
 
