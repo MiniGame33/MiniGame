@@ -34,14 +34,14 @@ public class CameraGy : MonoBehaviour {
         //float _x = transform.position.x;
         //float _y = transform.position.y;
         float _x = Input.gyro.gravity.x * 5;
-        float _y = (Input.gyro.gravity.y + 0.8f) * 5 + 15f;
-        if (_y > 16)
+        float _y = (Input.gyro.gravity.y) * 5;
+        if (_y > 1)
         {
-            _y = 16;
+            _y = 1;
         }
-        else if (_y < 14)
+        else if (_y < -1)
         {
-            _y = 14;
+            _y = -1;
         }
         if (_x > 1)
         {
