@@ -14,24 +14,29 @@
     public float Factor = 200.0f;
     [Range(1, 8)]
     public int FastFilter = 2;
+    public string shaderName = "";
 
-    public static float ChangeRadius;
-    public static float ChangeFactor;
-    public static int ChangeFastFilter;
+    public  float ChangeRadius;
+    public  float ChangeFactor;
+    public  int ChangeFastFilter;
+
+
+
+
 
 
 
 
 
     #endregion
-    #region Properties        Material material
+    #region Properties        public Material material
     {
         get
         {
             if (SCMaterial == null)
             {
                 SCMaterial = new Material(SCShader);
-                SCMaterial.hideFlags = HideFlags.HideAndDontSave;
+    SCMaterial.hideFlags = HideFlags.HideAndDontSave;
             }
             return SCMaterial;
         }
@@ -43,7 +48,7 @@
         ChangeRadius = Radius;
         ChangeFactor = Factor;
         ChangeFastFilter = FastFilter;
-        SCShader = Shader.Find("CameraFilterPack/Blur_Movie");
+        SCShader = Shader.Find("CameraFilterPack/"+ shaderName);
 
         if (!SystemInfo.supportsImageEffects)
         {
@@ -114,7 +119,7 @@
 
 
 
-#if UNITY_EDITOR                if (Application.isPlaying!=true)                {                        SCShader = Shader.Find("CameraFilterPack/Blur_Movie");                 }
+#if UNITY_EDITOR                if (Application.isPlaying!=true)                {                        SCShader = Shader.Find("CameraFilterPack/"+ shaderName);                 }
 #endif
     }
 

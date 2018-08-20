@@ -1,6 +1,6 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "CameraFilterPack/Blur_Movie" {
+Shader "CameraFilterPack/Blur_Movie1" {
         Properties 
         {
                 _MainTex ("Base (RGB)", 2D) = "white" {}
