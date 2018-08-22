@@ -6,7 +6,6 @@ public class CameraGy : MonoBehaviour {
     private const float lowPassFilterFactor = 0.2f;
     Gyroscope go;
     bool gyinfo;
-    public UILabel gyLabel;
     public GameObject cameraPoint;
     public Vector3 lastGy;
     void Start () {
@@ -51,7 +50,10 @@ public class CameraGy : MonoBehaviour {
         {
             _x = -1;
         }
+        transform.position = new Vector3(_x, _y + 0.8f, transform.position.z);
+#if UNITY_EDITOR
         transform.position = new Vector3(_x, _y, transform.position.z);
+#endif
         transform.LookAt(cameraPoint.transform);
     }
 }

@@ -22,7 +22,7 @@ public class OpenExcelWindow : EditorWindow
     {
         fileList.Clear();
 
-        string[] files = Directory.GetFiles(Application.dataPath + "/ExcelTools/xlsx/");
+        string[] files = Directory.GetFiles(Application.dataPath + "/Editor/ExcelTools/xlsx/");
 
         for (int i = 0; i < files.Length; i++)
         {

@@ -22,6 +22,9 @@ public class LandRoteCtrl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(new Vector3(0, 0, roteSpeed * Time.deltaTime));
+        if (PlayerMgr._instance.needRote)
+        {
+            this.transform.Rotate(new Vector3(0, 0, roteSpeed * Time.deltaTime));
+        }
     }
 }

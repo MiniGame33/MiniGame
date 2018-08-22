@@ -33,7 +33,7 @@ public class EventMgr : MonoBehaviour {
 		
 	}
 
-    void Hide(NotifyEvent _event = null)
+    public void Hide(NotifyEvent _event = null)
     {
         for (int i = 0; i < eventItems.Count; i++)
         {
@@ -41,7 +41,7 @@ public class EventMgr : MonoBehaviour {
         }
     }
 
-    void Show(NotifyEvent _event = null)
+    public void Show(NotifyEvent _event = null)
     {
         for (int i = 0; i < eventItems.Count; i++)
         {

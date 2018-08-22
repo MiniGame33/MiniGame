@@ -19,8 +19,7 @@ public class EventItem : MonoBehaviour {
 
 	private void OnMouseDown()
     {
-        EventMgr._instance._camera.GetComponent<CameraGy>().enabled = false;
-        EventMgr._instance._camera.transform.position = EventMgr._instance.eventCameraPos;
-        UIMgr._instance.PushUI(UIMgr._instance.eventUI);
-	}
+        NotifacitionCenter.getInstance().Emit("EventHide", this);
+        UIMgr._instance.mainUI.ShowEventPanel();
+    }
 }

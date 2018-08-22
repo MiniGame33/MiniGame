@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MainUI : MonoBehaviour {
-    public static MainUI _instance;
 
     public GameObject eventLabel;
+    public GameObject eventPanel;
+    public GameObject dayPanel;
+    public GameObject nightPanel;
+    public Slider dayBar;
 	private void Awake()
 	{
-        _instance = this;
-	}
+        eventLabel.SetActive(false);
+        eventPanel.SetActive(false);
+        OnEnterDay();
+    }
 	private void OnEnable()
 	{
 		
@@ -25,9 +30,36 @@ public class MainUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        dayBar.value = PlayerMgr._instance.day / 7.0f;
+    }
     void ShowEventLabel(){
         
+    }
+
+    public void ShowEventPanel() {
+        eventLabel.SetActive(false);
+        eventPanel.SetActive(true);
+    }
+
+    public void CloseEventPanel() {
+        eventPanel.SetActive(false);
+        NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
+        OnEnterNight();
+    }
+
+    public void NextDay()
+    {
+        NotifacitionCenter.getInstance().Emit("OnEnterDay", this);
+        OnEnterDay();
+    }
+
+    public void OnEnterNight() {
+        dayPanel.SetActive(false);
+        nightPanel.SetActive(true);
+    }
+    public void OnEnterDay()
+    {
+        dayPanel.SetActive(true);
+        nightPanel.SetActive(false);
     }
 }
