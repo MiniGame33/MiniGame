@@ -29,7 +29,7 @@ public class CameraGy : MonoBehaviour {
 	//y+ 上 x+右
 	// Update is called once per frame
 	void Update () {
-        gyLabel.text = Input.gyro.gravity.ToString();
+        //gyLabel.text = Input.gyro.gravity.ToString();
         //transform.position += new Vector3(10* Input.gyro.gravity.x - lastGy.x,10 * Input.gyro.gravity.y - lastGy.y,0);
         //float _x = transform.position.x;
         //float _y = transform.position.y;
