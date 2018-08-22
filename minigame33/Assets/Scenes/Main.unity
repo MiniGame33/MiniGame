@@ -1032,7 +1032,7 @@ Transform:
   m_GameObject: {fileID: 999386198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52, y: 2, z: 0}
-  m_LocalScale: {x: 0.0024539877, y: 0.0024539877, z: 0.0024539877}
+  m_LocalScale: {x: 0.0057803467, y: 0.0057803467, z: 0.0057803467}
   m_Children:
   - {fileID: 1997235936}
   - {fileID: 1066368349}
@@ -1328,18 +1328,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0.03773582, g: 0.00231399, b: 0.00231399, a: 1}
   mPivot: 4
-  mWidth: 288
-  mHeight: 32
+  mWidth: 144
+  mHeight: 16
   mDepth: 1
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 9
+  aspectRatio: 5
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
   mText: "\u9009\u62E9\u4ECA\u5929\u8BA1\u5212\u7684\u4E8B\u60C5"
-  mFontSize: 32
+  mFontSize: 16
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -2248,7 +2248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1817593185
 Transform:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1817593184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 296, z: 0}
+  m_LocalPosition: {x: 0, y: 114.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1226850466}
@@ -2275,31 +2275,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAnchor:
-    target: {fileID: 999386202}
-    relative: 0.5
+    target: {fileID: 0}
+    relative: 0
     absolute: -165
   rightAnchor:
-    target: {fileID: 999386202}
-    relative: 0.5
+    target: {fileID: 0}
+    relative: 1
     absolute: 165
   bottomAnchor:
-    target: {fileID: 999386202}
-    relative: 1
+    target: {fileID: 0}
+    relative: 0
     absolute: -136
   topAnchor:
-    target: {fileID: 999386202}
+    target: {fileID: 0}
     relative: 1
     absolute: -87
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 330
-  mHeight: 49
+  mWidth: 165
+  mHeight: 24
   mDepth: 0
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 6.734694
+  aspectRatio: 6.875
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
