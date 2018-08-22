@@ -5,7 +5,10 @@ using UnityEngine;
 public class EventMgr : MonoBehaviour {
     public static EventMgr _instance;
     public List<EventItem> eventItems;
+    public GameObject _camera;
 
+    public Vector3 mainCameraPos;
+    public Vector3 eventCameraPos;
 	private void OnEnable()
 	{
         NotifacitionCenter.getInstance().On("EventHide",Hide);

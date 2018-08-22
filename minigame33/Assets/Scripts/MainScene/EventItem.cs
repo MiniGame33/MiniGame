@@ -18,7 +18,9 @@ public class EventItem : MonoBehaviour {
 	}
 
 	private void OnMouseDown()
-	{
-        Debug.Log("event click");
+    {
+        EventMgr._instance._camera.GetComponent<CameraGy>().enabled = false;
+        EventMgr._instance._camera.transform.position = EventMgr._instance.eventCameraPos;
+        UIMgr._instance.PushUI(UIMgr._instance.eventUI);
 	}
 }
