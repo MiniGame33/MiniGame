@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &436293377
 Transform:
   m_ObjectHideFlags: 0
@@ -886,7 +886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606693644
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,7 +1123,7 @@ Transform:
   m_GameObject: {fileID: 999386198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52, y: 2, z: 0}
-  m_LocalScale: {x: 0.0057803467, y: 0.0057803467, z: 0.0057803467}
+  m_LocalScale: {x: 0.0024539877, y: 0.0024539877, z: 0.0024539877}
   m_Children:
   - {fileID: 1997235936}
   - {fileID: 602599531}
@@ -1227,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1184120120
 Transform:
   m_ObjectHideFlags: 0
@@ -1529,7 +1529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1335612503}
   - component: {fileID: 1335612502}
-  - component: {fileID: 1335612504}
   m_Layer: 10
   m_Name: Mainbg
   m_TagString: Untagged
@@ -1572,8 +1571,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9dfd6cf170f3d04d8ef74b2fc092c33, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4cf9ba3c42e453043befa88f48b45510, type: 3}
+  m_Color: {r: 0.93652695, g: 0.29503384, b: 0.9622642, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1591,23 +1590,11 @@ Transform:
   m_GameObject: {fileID: 1335612501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1757666643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1335612504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1335612501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d515023bf9eff745ac2d8fdeaf37a08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roteSpeed: 15
 --- !u!1 &1398078970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,7 +2114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1797703686
 Transform:
   m_ObjectHideFlags: 0

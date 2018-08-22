@@ -16,4 +16,9 @@ public class EventItem : MonoBehaviour {
 	void Update () {
         
 	}
+
+	private void OnMouseDown()
+	{
+        Debug.Log("event click");
+	}
 }
