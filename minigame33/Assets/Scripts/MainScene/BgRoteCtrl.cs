@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BgRoteCtrl : MonoBehaviour {
-    public float roteSpeed = 0;
+    public double roteSpeed = 0;
     private void Awake()
     {
         if (roteSpeed == 0)
@@ -20,6 +20,6 @@ public class BgRoteCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.transform.Rotate(new Vector3(0, 0, roteSpeed * Time.deltaTime));
+        this.transform.Rotate(new Vector3(0, 0, (float)roteSpeed * Time.deltaTime));
 	}
 }

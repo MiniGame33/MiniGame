@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LandRoteCtrl : MonoBehaviour {
 
-    public float roteSpeed = 0;
+    public double roteSpeed = 0;
     private void Awake()
     {
         if (roteSpeed == 0)
@@ -24,7 +24,7 @@ public class LandRoteCtrl : MonoBehaviour {
     {
         if (PlayerMgr._instance.needRote)
         {
-            this.transform.Rotate(new Vector3(0, 0, roteSpeed * Time.deltaTime));
+            this.transform.Rotate(new Vector3(0, 0, (float)roteSpeed * Time.deltaTime));
         }
     }
 }

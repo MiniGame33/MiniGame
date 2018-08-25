@@ -27,7 +27,7 @@ public class ExcelTool: EditorWindow
     /// <param name="filename">Filename.</param>
     public static string LoadData(string filename)
     {
-        FileStream stream = File.Open(Application.dataPath + "/ExcelTools/xlsx/" + filename, FileMode.Open, FileAccess.Read);
+        FileStream stream = File.Open(Application.dataPath + "/Editor/ExcelTools/xlsx/" + filename, FileMode.Open, FileAccess.Read);
         IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
 
         DataSet result = excelReader.AsDataSet();
@@ -60,7 +60,7 @@ public class ExcelTool: EditorWindow
     /// <param name="result">Result.</param>
     public static bool HandleATable(DataTable result)
     {
-        Debug.Log(result.TableName);
+        Debug.Log(GetClassNameByName(result.TableName));
 
         //创建这个类
         Type t = Type.GetType(GetClassNameByName(result.TableName));

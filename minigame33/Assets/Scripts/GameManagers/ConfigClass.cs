@@ -19,7 +19,7 @@ public class Global : ConfigClass
 {
     public string version;
     public bool isDebug;
-    public float bgRoteSpeed;
+    public double bgRoteSpeed;
 }
 
 [Serializable]
