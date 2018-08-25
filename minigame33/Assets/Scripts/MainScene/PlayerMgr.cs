@@ -36,10 +36,6 @@ public class PlayerMgr : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-        mainBgNight.GetComponent<Renderer>().material.color = new Color(mainBgNight.GetComponent<Renderer>().material.color.r,
-                                                                        mainBgNight.GetComponent<Renderer>().material.color.g,
-                                                                        mainBgNight.GetComponent<Renderer>().material.color.b,
-                                                                        0);
     }
 	
 	// Update is called once per frame
@@ -69,12 +65,10 @@ public class PlayerMgr : MonoBehaviour {
         needRote = true;
         _showEventLabelTime = 0;
         _showEventTime = 0;
-        mainBgDay.GetComponent<Renderer>().material.DOFade(1, 2);
-        mainBgNight.GetComponent<Renderer>().material.DOFade(0, 2);
+        mainBgNight.transform.DOLocalMove(new Vector3(0,35,0),2f);
     }
     public void EnterNight(NotifyEvent _event)
     {
-        mainBgDay.GetComponent<Renderer>().material.DOFade(0, 2);
-        mainBgNight.GetComponent<Renderer>().material.DOFade(1, 2);
+        mainBgNight.transform.DOLocalMove(new Vector3(0, 5, 0), 2f);
     }
 }

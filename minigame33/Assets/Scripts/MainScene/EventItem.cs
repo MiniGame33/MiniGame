@@ -8,7 +8,7 @@ public class EventItem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         startPos = transform.localPosition;
-        endPos = startPos + new Vector3(0, 0.5f, 0);
+        endPos = startPos + new Vector3(0, 0.125f, 0);
         transform.DOLocalMove(endPos, 0.5f).SetLoops(-1,LoopType.Yoyo);
 	}
 	
