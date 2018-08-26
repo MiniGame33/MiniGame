@@ -12,6 +12,8 @@ public class CfgTabelMgr : MonoBehaviour {
     void Awake () {
         _instance = this;
         StartCoroutine("ReadConfigFileGlobal", "Global");
+        StartCoroutine("ReadConfigFileRandomEvent", "RandomEvent");
+        StartCoroutine("ReadConfigFileOption", "Option");
     }
 
     IEnumerator ReadConfigFileGlobal(string tablename)
@@ -39,6 +41,60 @@ public class CfgTabelMgr : MonoBehaviour {
         if (loadStep <= 0)
         {
             LoadMgr._instance.loadNum--; 
+        }
+    }
+    IEnumerator ReadConfigFileRandomEvent(string tablename)
+    {
+        loadStep++;
+        string filename = tablename + fileNameStr;
+        string filepath = GetConfigFilePath(filename);
+
+        WWW www = new WWW(filepath);
+        yield return www;
+        while (www.isDone == false) yield return null;
+        if (www.error == null)
+        {
+            string data = www.text;
+            DeserializeRandomEvent cfgDeserializeClass = JsonUtility.FromJson<DeserializeRandomEvent>(data);
+            List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
+            CfgTabelData.GetInstance().WriteData(tablename, cfgList);
+        }
+        else
+        {
+            Debug.LogError("wwwError<<" + www.error + "<<" + filepath);
+        }
+
+        loadStep--;
+        if (loadStep <= 0)
+        {
+            LoadMgr._instance.loadNum--;
+        }
+    }
+    IEnumerator ReadConfigFileOption(string tablename)
+    {
+        loadStep++;
+        string filename = tablename + fileNameStr;
+        string filepath = GetConfigFilePath(filename);
+
+        WWW www = new WWW(filepath);
+        yield return www;
+        while (www.isDone == false) yield return null;
+        if (www.error == null)
+        {
+            string data = www.text;
+            DeserializeOption cfgDeserializeClass = JsonUtility.FromJson<DeserializeOption>(data);
+            List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
+            CfgTabelData.GetInstance().WriteData(tablename, cfgList);
+        }
+        else
+        {
+            Debug.LogError("wwwError<<" + www.error + "<<" + filepath);
+        }
+
+        loadStep--;
+        if (loadStep <= 0)
+        {
+            LoadMgr._instance.loadNum--;
         }
     }
     public static string GetConfigFilePath(string tablename)
@@ -102,7 +158,10 @@ public class CfgTabelData
     }
 
     public CfgDataList GetCfgTabelByName(string tabelname) {
-        return dic[tabelname];
+        if (dic.ContainsKey(tabelname))
+            return dic[tabelname];
+        else
+            return null;
     }
     public void LogDataByTableName(string tablename)
     {

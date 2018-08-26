@@ -9,7 +9,6 @@ using System.Data;
 using System.Runtime.Serialization.Formatters.Binary;
 using LitJson;
 using UnityEditor;
-
 public class ExcelTool: EditorWindow
 {
 
@@ -51,7 +50,7 @@ public class ExcelTool: EditorWindow
         {
             return "GameStringConf";
         }
-        return tablename;
+        return "Serializ"+tablename;
     }
 
     /// <summary>
@@ -87,12 +86,12 @@ public class ExcelTool: EditorWindow
         }
 
         //存储表内容的字典
-        List<ConfigClass> datalist = new List<ConfigClass>();
+        List<SerializConfigClass> datalist = new List<SerializConfigClass>();
 
         //遍历所有内容
         for (int i = contentStarRow; i < rows; i++)
         {
-            ConfigClass o = Activator.CreateInstance(t) as ConfigClass;
+            SerializConfigClass o = Activator.CreateInstance(t) as SerializConfigClass;
 
             for (int j = 0; j < columns; j++)
             {
@@ -142,7 +141,7 @@ public class ExcelTool: EditorWindow
     /// </summary>
     /// <param name="dic">Dic.</param>
     /// <param name="tablename">Tablename.</param>
-    public static void SaveTableData(List<ConfigClass> datalist, string tablename)
+    public static void SaveTableData(List<SerializConfigClass> datalist, string tablename)
     {
 
         byte[] dicdata = SerializeObj(datalist);

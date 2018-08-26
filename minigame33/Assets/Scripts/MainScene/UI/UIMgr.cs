@@ -7,6 +7,7 @@ public class UIMgr : MonoBehaviour {
     public Stack<GameObject> uiList = new Stack<GameObject>();
     public MainUI mainUI;
     public EventUI eventUI;
+    public UIRandomEvent randomEventUI;
 
 	private void Awake()
 	{

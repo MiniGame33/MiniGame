@@ -23,6 +23,25 @@ public class Global : ConfigClass
 }
 
 [Serializable]
+public class RandomEvent : ConfigClass
+{
+    public string name;
+    public string desc;
+    public string spriteName;
+    public int opA;
+    public int opB;
+    public int opC;
+    public int opD;
+}
+
+[Serializable]
+public class Option : ConfigClass
+{
+    public string desc;
+    public string result;
+}
+
+[Serializable]
 public class DeserializeClass
 {
     public ConfigClass[] cfgArray;
@@ -32,4 +51,16 @@ public class DeserializeClass
 public class DeserializeGlobal : DeserializeClass
 {
     public new Global[] cfgArray;
+}
+
+[Serializable]
+public class DeserializeRandomEvent : DeserializeClass
+{
+    public new RandomEvent[] cfgArray;
+}
+
+[Serializable]
+public class DeserializeOption : DeserializeClass
+{
+    public new Option[] cfgArray;
 }

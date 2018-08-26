@@ -7,7 +7,7 @@ public class LandRoteCtrl : MonoBehaviour {
     public double roteSpeed = 0;
     private void Awake()
     {
-        if (roteSpeed == 0)
+        if (CfgTabelData.GetInstance().GetCfgTabelByName("Global")!=null)
         {
             Global _global = CfgTabelData.GetInstance().GetCfgTabelByName("Global").getDataByID(1) as Global;
             roteSpeed = _global.bgRoteSpeed;
