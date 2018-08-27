@@ -14,6 +14,7 @@ public class CfgTabelMgr : MonoBehaviour {
         StartCoroutine("ReadConfigFileGlobal", "Global");
         StartCoroutine("ReadConfigFileRandomEvent", "RandomEvent");
         StartCoroutine("ReadConfigFileOption", "Option");
+        StartCoroutine("ReadConfigDailyEvent", "DailyEvent");
     }
 
     IEnumerator ReadConfigFileGlobal(string tablename)
@@ -83,6 +84,33 @@ public class CfgTabelMgr : MonoBehaviour {
         {
             string data = www.text;
             DeserializeOption cfgDeserializeClass = JsonUtility.FromJson<DeserializeOption>(data);
+            List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
+            CfgTabelData.GetInstance().WriteData(tablename, cfgList);
+        }
+        else
+        {
+            Debug.LogError("wwwError<<" + www.error + "<<" + filepath);
+        }
+
+        loadStep--;
+        if (loadStep <= 0)
+        {
+            LoadMgr._instance.loadNum--;
+        }
+    }
+    IEnumerator ReadConfigDailyEvent(string tablename)
+    {
+        loadStep++;
+        string filename = tablename + fileNameStr;
+        string filepath = GetConfigFilePath(filename);
+
+        WWW www = new WWW(filepath);
+        yield return www;
+        while (www.isDone == false) yield return null;
+        if (www.error == null)
+        {
+            string data = www.text;
+            DeserializeDailyEvent cfgDeserializeClass = JsonUtility.FromJson<DeserializeDailyEvent>(data);
             List<ConfigClass> cfgList = new List<ConfigClass>(cfgDeserializeClass.cfgArray);
             CfgTabelData.GetInstance().WriteData(tablename, cfgList);
         }

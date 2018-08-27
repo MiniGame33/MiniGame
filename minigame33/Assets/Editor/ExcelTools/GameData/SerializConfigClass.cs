@@ -36,3 +36,11 @@ public class SerializOption : SerializConfigClass
     public string desc;
     public string result;
 }
+
+[Serializable]
+public class SerializDailyEvent : SerializConfigClass
+{
+    public string name;
+    public string desc;
+    public string spriteName;
+}

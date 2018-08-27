@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class MainUI : MonoBehaviour {
 
     public GameObject eventLabel;
-    public GameObject eventPanel;
+    public EventUI eventPanel;
     public GameObject dayPanel;
     public GameObject nightPanel;
     public Slider dayBar;
 	private void Awake()
 	{
         eventLabel.SetActive(false);
-        eventPanel.SetActive(false);
+        eventPanel.gameObject.SetActive(false);
         OnEnterDay();
     }
 	private void OnEnable()
@@ -38,11 +38,11 @@ public class MainUI : MonoBehaviour {
 
     public void ShowEventPanel() {
         eventLabel.SetActive(false);
-        eventPanel.SetActive(true);
+        eventPanel.gameObject.SetActive(true);
     }
 
     public void CloseEventPanel() {
-        eventPanel.SetActive(false);
+        eventPanel.gameObject.SetActive(false);
         NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
         OnEnterNight();
     }

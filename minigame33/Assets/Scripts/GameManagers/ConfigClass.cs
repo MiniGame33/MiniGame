@@ -42,6 +42,14 @@ public class Option : ConfigClass
 }
 
 [Serializable]
+public class DailyEvent : ConfigClass
+{
+    public string name;
+    public string desc;
+    public string spriteName;
+}
+
+[Serializable]
 public class DeserializeClass
 {
     public ConfigClass[] cfgArray;
@@ -63,4 +71,10 @@ public class DeserializeRandomEvent : DeserializeClass
 public class DeserializeOption : DeserializeClass
 {
     public new Option[] cfgArray;
+}
+
+[Serializable]
+public class DeserializeDailyEvent : DeserializeClass
+{
+    public new DailyEvent[] cfgArray;
 }

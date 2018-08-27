@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class EventUI : MonoBehaviour {
     public static EventUI _instance;
 	private void Awake()
@@ -17,7 +17,4 @@ public class EventUI : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void OnBackClick(){
-        UIMgr._instance.PopUI();
-    }
 }
