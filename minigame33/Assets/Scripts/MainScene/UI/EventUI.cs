@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EventUI : MonoBehaviour {
     public static EventUI _instance;
+    public Text title;
+    public Text desc;
+    public Image imageBg;
 	private void Awake()
 	{
         _instance = this;
@@ -17,4 +20,11 @@ public class EventUI : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void Show(DailyEvent dailyEvent){
+        title.text = dailyEvent.name;
+        desc.text = dailyEvent.desc;
+        Object sp = Resources.Load(dailyEvent.spriteName, typeof(Sprite));
+        imageBg.sprite = sp as Sprite;
+        gameObject.SetActive(true);
+    }
 }

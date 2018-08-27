@@ -36,9 +36,9 @@ public class MainUI : MonoBehaviour {
         
     }
 
-    public void ShowEventPanel() {
+    public void ShowEventPanel(DailyEvent dailyEvent) {
         eventLabel.SetActive(false);
-        eventPanel.gameObject.SetActive(true);
+        eventPanel.Show(dailyEvent);
     }
 
     public void CloseEventPanel() {
