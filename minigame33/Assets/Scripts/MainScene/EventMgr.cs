@@ -16,6 +16,8 @@ public class EventMgr : MonoBehaviour {
 
     public CfgTabelData.CfgDataList randomEventCfg;
     public CfgTabelData.CfgDataList optionCfg;
+
+    public List<int> randomList = new List<int> { 0,0,0,0,0,0,0};
     private void OnEnable()
 	{
         NotifacitionCenter.getInstance().On("EventHide",Hide);
@@ -37,6 +39,7 @@ public class EventMgr : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        randomList[2] = 1;
         Hide();
 	}
 	
@@ -65,6 +68,10 @@ public class EventMgr : MonoBehaviour {
     }
 
     public void SetRandomEvent() {
+        if (randomEventCfg.getDataByID(randomList[PlayerMgr._instance.day - 1]) == null) {
+            PlayerMgr._instance.EndRandomEvent();
+            return;
+        }
         checkRandomEvent = true;
         randomEvent.SetActive(true);
         randomEvent.transform.position = randomPos.position;
