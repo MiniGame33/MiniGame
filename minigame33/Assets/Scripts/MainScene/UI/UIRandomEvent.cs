@@ -7,6 +7,8 @@ public class UIRandomEvent : MonoBehaviour {
     public static UIRandomEvent _instance;
 
     public Text descText;
+    public Text reslutText;
+    public Text titleText;
     public Image imageBg;
     public GameObject close;
     public ScrollRect scrollRect;
@@ -33,14 +35,14 @@ public class UIRandomEvent : MonoBehaviour {
     }
     public void Show(RandomEvent randomEvent)
     {
+        reslutText.transform.parent.gameObject.SetActive(false);
+        titleText.text = randomEvent.name;
         Object sp = Resources.Load(randomEvent.spriteName, typeof(Sprite));
         imageBg.sprite = sp as Sprite;
-        descText.text = randomEvent.desc;
-        descText.transform.localPosition = Vector3.zero;
+        descText.text = "\u3000\u3000" + randomEvent.desc;
         opList[0].Show(EventMgr._instance.optionCfg.getDataByID(randomEvent.opA) as Option);
         opList[1].Show(EventMgr._instance.optionCfg.getDataByID(randomEvent.opB) as Option);
         opList[2].Show(EventMgr._instance.optionCfg.getDataByID(randomEvent.opC) as Option);
-        opList[3].Show(EventMgr._instance.optionCfg.getDataByID(randomEvent.opD) as Option);
         over = false;
         close.SetActive(false);
         gameObject.SetActive(true);

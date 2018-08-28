@@ -33,8 +33,8 @@ public class RandomEventOp : MonoBehaviour {
 
     public void ResultTextShow()
     {
-        UIRandomEvent._instance.descText.text += "\n" + op.result;
-        UIRandomEvent._instance.descText.transform.localPosition = new Vector3(0,10000,0);
+        UIRandomEvent._instance.reslutText.text = op.result;
+        UIRandomEvent._instance.reslutText.transform.parent.gameObject.SetActive(true);
         UIRandomEvent._instance.close.SetActive(true);
     }
 }
