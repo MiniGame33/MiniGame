@@ -33,7 +33,7 @@ public class RandomEventOp : MonoBehaviour {
 
     public void ResultTextShow()
     {
-        UIRandomEvent._instance.descText.text += op.result;
+        UIRandomEvent._instance.descText.text += "\n" + op.result;
         UIRandomEvent._instance.descText.transform.localPosition = new Vector3(0,10000,0);
         UIRandomEvent._instance.close.SetActive(true);
     }
