@@ -80,7 +80,7 @@ public class EventMgr : MonoBehaviour {
 
     public void StartRandomEvent(NotifyEvent _event = null) {
         checkRandomEvent = false;
-        UIMgr._instance.randomEventUI.Show(randomEventCfg.getDataByID(1) as RandomEvent);
+        UIMgr._instance.mainUI.randomEventPanel.Show(randomEventCfg.getDataByID(1) as RandomEvent);
         PlayerMgr._instance.needRote = false;
     }
 

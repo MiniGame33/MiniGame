@@ -27,4 +27,8 @@ public class EventUI : MonoBehaviour {
         imageBg.sprite = sp as Sprite;
         gameObject.SetActive(true);
     }
+    public void Hide() {
+        NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
+        gameObject.SetActive(false);
+    }
 }

@@ -20,6 +20,10 @@ public class Global : ConfigClass
     public string version;
     public bool isDebug;
     public double bgRoteSpeed;
+    public int initPopu;
+    public int initFood;
+    public int initArm;
+    public int initTech;
 }
 
 [Serializable]

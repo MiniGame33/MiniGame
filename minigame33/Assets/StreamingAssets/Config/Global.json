@@ -1,1 +1,1 @@
-{ "cfgArray" : [{"version":"1.0.0","isDebug":true,"bgRoteSpeed":10.0,"id":1}]}
+{ "cfgArray" : [{"version":"1.0.0","isDebug":true,"bgRoteSpeed":10.0,"initPopu":100,"initFood":50,"initArm":0,"initTech":0,"id":1}]}
