@@ -28,7 +28,14 @@ public class EventUI : MonoBehaviour {
         gameObject.SetActive(true);
     }
     public void Hide() {
-        NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
+        if (PlayerMgr._instance.isDay)
+        {
+            NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
+        }
+        else
+        {
+            UINight._instance.nextDayBtn.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }

@@ -48,3 +48,15 @@ public class SerializDailyEvent : SerializConfigClass
     public string desc;
     public string spriteName;
 }
+
+[Serializable]
+public class SerializProcess : SerializConfigClass
+{
+    public int dayRandom;
+    public int dayDaily1;
+    public int dayDaily2;
+    public int dayDaily3;
+    public int nightRandom;
+    public int nightDaily1;
+    public int nightDaily2;
+}

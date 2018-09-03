@@ -54,6 +54,18 @@ public class DailyEvent : ConfigClass
 }
 
 [Serializable]
+public class Process : ConfigClass
+{
+    public int dayRandom;
+    public int dayDaily1;
+    public int dayDaily2;
+    public int dayDaily3;
+    public int nightRandom;
+    public int nightDaily1;
+    public int nightDaily2;
+}
+
+[Serializable]
 public class DeserializeClass
 {
     public ConfigClass[] cfgArray;
@@ -81,4 +93,10 @@ public class DeserializeOption : DeserializeClass
 public class DeserializeDailyEvent : DeserializeClass
 {
     public new DailyEvent[] cfgArray;
+}
+
+[Serializable]
+public class DeserializeProcess : DeserializeClass
+{
+    public new Process[] cfgArray;
 }

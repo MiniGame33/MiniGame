@@ -48,13 +48,13 @@ public class MainUI : MonoBehaviour {
     }
 	private void OnEnable()
 	{
-        NotifacitionCenter.getInstance().On("OnEnterDay",OnEnterDay);
-        NotifacitionCenter.getInstance().On("OnEnterNight", OnEnterNight);
+        //NotifacitionCenter.getInstance().On("OnEnterDay",OnEnterDay);
+        //NotifacitionCenter.getInstance().On("OnEnterNight", OnEnterNight);
     }
 	private void OnDisable()
 	{
-        NotifacitionCenter.getInstance().Off("OnEnterDay", OnEnterDay);
-        NotifacitionCenter.getInstance().Off("OnEnterNight", OnEnterNight);
+        //NotifacitionCenter.getInstance().Off("OnEnterDay", OnEnterDay);
+        //NotifacitionCenter.getInstance().Off("OnEnterNight", OnEnterNight);
     }
 	// Use this for initialization
 	void Start () {
@@ -81,6 +81,7 @@ public class MainUI : MonoBehaviour {
     public void OnEnterNight(NotifyEvent _event = null) {
         dayPanel.gameObject.SetActive(false);
         nightPanel.gameObject.SetActive(true);
+        nightPanel.nextDayBtn.SetActive(false);
     }
     public void OnEnterDay(NotifyEvent _event = null)
     {

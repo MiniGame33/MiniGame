@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UINight : MonoBehaviour {
     public static UINight _instance;
+    public GameObject nextDayBtn;
     private void Awake()
     {
         _instance = this;

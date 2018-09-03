@@ -2285,9 +2285,11 @@ MonoBehaviour:
   needRote: 1
   showEventLabelTime: 1
   showEventTime: 2
+  showNightEventTime: 1
   bgStartPos: {x: 0, y: 0, z: 0}
   bgEndPos: {x: 0, y: 15, z: 0}
   day: 1
+  isDay: 0
 --- !u!4 &1426856158
 Transform:
   m_ObjectHideFlags: 0
@@ -2315,6 +2317,7 @@ MonoBehaviour:
   eventItems:
   - {fileID: 49786767}
   - {fileID: 1729980680}
+  - {fileID: 1398078973}
   - {fileID: 1398078973}
   _camera: {fileID: 2055876010}
   randomPos: {fileID: 1623661341}

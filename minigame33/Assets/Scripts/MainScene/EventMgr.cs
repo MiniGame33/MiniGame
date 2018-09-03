@@ -21,13 +21,11 @@ public class EventMgr : MonoBehaviour {
     private void OnEnable()
 	{
         NotifacitionCenter.getInstance().On("EventHide",Hide);
-        NotifacitionCenter.getInstance().On("EventShow", Show);
         NotifacitionCenter.getInstance().On("EndRandomEvent", EndRandomEvent);
     }
 	private void OnDisable()
 	{
         NotifacitionCenter.getInstance().Off("EventHide", Hide);
-        NotifacitionCenter.getInstance().Off("EventShow", Show);
         NotifacitionCenter.getInstance().Off("EndRandomEvent", EndRandomEvent);
     }
 	private void Awake()
@@ -59,16 +57,30 @@ public class EventMgr : MonoBehaviour {
         }
     }
 
-    public void Show(NotifyEvent _event = null)
+    public void DayDailyShow(NotifyEvent _event = null)
     {
+        Process process = PlayerMgr._instance._processCfg.getDataByID(PlayerMgr._instance.day) as Process;
         for (int i = 0; i < eventItems.Count; i++)
         {
+            if (eventItems[i].id == process.dayDaily1
+                || eventItems[i].id == process.dayDaily2
+                || eventItems[i].id == process.dayDaily3)
             eventItems[i].gameObject.SetActive(true);
         }
     }
-
-    public void SetRandomEvent() {
-        if (randomEventCfg.getDataByID(randomList[PlayerMgr._instance.day - 1]) == null) {
+    public void NightDailyShow(NotifyEvent _event = null)
+    {
+        Process process = PlayerMgr._instance._processCfg.getDataByID(PlayerMgr._instance.day) as Process;
+        for (int i = 0; i < eventItems.Count; i++)
+        {
+            if (eventItems[i].id == process.nightDaily1
+                || eventItems[i].id == process.nightDaily2)
+                eventItems[i].gameObject.SetActive(true);
+        }
+    }
+    public void SetDayRandomEvent() {
+        Process process = PlayerMgr._instance._processCfg.getDataByID(PlayerMgr._instance.day) as Process;
+        if (randomEventCfg.getDataByID(process.dayRandom) == null) {
             PlayerMgr._instance.EndRandomEvent();
             return;
         }
@@ -76,6 +88,17 @@ public class EventMgr : MonoBehaviour {
         randomEvent.SetActive(true);
         randomEvent.transform.position = randomPos.position;
         randomEvent.transform.rotation = randomPos.rotation;
+    }
+
+    public void SetNightRandomEvent()
+    {
+        Process process = PlayerMgr._instance._processCfg.getDataByID(PlayerMgr._instance.day) as Process;
+        if (randomEventCfg.getDataByID(process.nightRandom) == null)
+        {
+            PlayerMgr._instance.EndRandomEvent();
+            return;
+        }
+        StartRandomEvent();
     }
 
     public void StartRandomEvent(NotifyEvent _event = null) {
