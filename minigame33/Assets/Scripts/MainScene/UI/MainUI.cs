@@ -14,6 +14,7 @@ public class MainUI : MonoBehaviour {
     public Text food;
     public Text arm;
     public Text tech;
+    public Text beli;
     private void Awake()
 	{
         eventLabel.SetActive(false);
@@ -67,10 +68,11 @@ public class MainUI : MonoBehaviour {
     }
 
     public void SetAttr() {
-        popu.text = DataMgr._instance.popu.ToString();
-        food.text = DataMgr._instance.food.ToString();
-        arm.text = DataMgr._instance.arm.ToString();
-        tech.text = DataMgr._instance.tech.ToString();
+        popu.text = ((int)DataMgr._instance.popu).ToString();
+        food.text = ((int)DataMgr._instance.food).ToString();
+        arm.text = ((int)DataMgr._instance.arm).ToString();
+        tech.text = ((int)DataMgr._instance.tech).ToString();
+        beli.text = ((int)DataMgr._instance.beli).ToString();
     }
 
     public void ShowEventPanel(DailyEvent dailyEvent) {

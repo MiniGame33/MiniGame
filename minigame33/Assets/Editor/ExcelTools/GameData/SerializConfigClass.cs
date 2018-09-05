@@ -20,6 +20,19 @@ public class SerializGlobal : SerializConfigClass
     public int initFood;
     public int initArm;
     public int initTech;
+    public int initBeli;
+    public double caiji_food;
+    public double dazao_arm;
+    public double dazao_food;
+    public double shoulie_food;
+    public double shoulie_popu;
+    public double jisi_beli;
+    public double jisi_food;
+    public double random_arm;
+    public double random_food;
+    public double random_popu;
+    public double random_beli;
+    public double random_tech;
 }
 
 [Serializable]
@@ -39,6 +52,11 @@ public class SerializOption : SerializConfigClass
 {
     public string desc;
     public string result;
+    public double popu;
+    public double food;
+    public double arm;
+    public double tech;
+    public double beli;
 }
 
 [Serializable]
@@ -47,6 +65,7 @@ public class SerializDailyEvent : SerializConfigClass
     public string name;
     public string desc;
     public string spriteName;
+    public string eventNotify;
 }
 
 [Serializable]

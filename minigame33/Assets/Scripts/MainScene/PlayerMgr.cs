@@ -80,6 +80,10 @@ public class PlayerMgr : MonoBehaviour {
     }
 
     public void EnterDay(NotifyEvent _event = null){
+        if (day != 0)
+        {
+            DataMgr._instance.DailyRun();
+        }
         day++;
         isDay = true;
         needRote = true;

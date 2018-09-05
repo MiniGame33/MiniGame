@@ -27,6 +27,7 @@ public class RandomEventOp : MonoBehaviour {
         {
             return;
         }
+        DataMgr._instance.OnRandomEvent(op);
         ResultTextShow();
         UIRandomEvent._instance.over = true;
     }

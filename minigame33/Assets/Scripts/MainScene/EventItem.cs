@@ -28,5 +28,6 @@ public class EventItem : MonoBehaviour {
     {
         NotifacitionCenter.getInstance().Emit("EventHide", this);
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit(dailyEventCfg.eventNotify,this);
     }
 }

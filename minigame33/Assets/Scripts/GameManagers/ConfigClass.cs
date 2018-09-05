@@ -20,10 +20,23 @@ public class Global : ConfigClass
     public string version;
     public bool isDebug;
     public double bgRoteSpeed;
-    public int initPopu;
-    public int initFood;
-    public int initArm;
-    public int initTech;
+    public double initPopu;
+    public double initFood;
+    public double initArm;
+    public double initTech;
+    public double initBeli;
+    public double caiji_food;
+    public double dazao_arm;
+    public double dazao_food;
+    public double shoulie_food;
+    public double shoulie_popu;
+    public double jisi_beli;
+    public double jisi_food;
+    public double random_arm;
+    public double random_food;
+    public double random_popu;
+    public double random_beli;
+    public double random_tech;
 }
 
 [Serializable]
@@ -43,6 +56,11 @@ public class Option : ConfigClass
 {
     public string desc;
     public string result;
+    public double popu;
+    public double food;
+    public double arm;
+    public double tech;
+    public double beli;
 }
 
 [Serializable]
@@ -51,6 +69,7 @@ public class DailyEvent : ConfigClass
     public string name;
     public string desc;
     public string spriteName;
+    public string eventNotify;
 }
 
 [Serializable]
