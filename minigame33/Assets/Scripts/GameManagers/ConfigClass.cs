@@ -61,6 +61,10 @@ public class Option : ConfigClass
     public double arm;
     public double tech;
     public double beli;
+    public string buff1;
+    public double buff_num1;
+    public string buff2;
+    public double buff_num2;
 }
 
 [Serializable]
