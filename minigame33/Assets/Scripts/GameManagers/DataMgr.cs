@@ -15,6 +15,7 @@ public class DataMgr : MonoBehaviour {
     public float caiji_food;
     public float dazao_arm;
     public float dazao_food;
+    public float shoulie_arm;
     public float shoulie_food;
     public float shoulie_popu;
     public float jisi_beli;
@@ -22,9 +23,11 @@ public class DataMgr : MonoBehaviour {
 
     public float random_arm;
     public float random_food;
-    public float random_popu;
     public float random_beli;
     public float random_tech;
+
+    public float random_popu_c;
+    public float random_popu_k;
     // Use this for initialization
     private void Awake()
     {
@@ -58,6 +61,7 @@ public class DataMgr : MonoBehaviour {
             caiji_food = (float)global.caiji_food;
             dazao_arm = (float)global.dazao_arm;
             dazao_food = (float)global.dazao_food;
+            shoulie_arm = (float)global.shoulie_arm;
             shoulie_food = (float)global.shoulie_food;
             shoulie_popu = (float)global.shoulie_popu;
             jisi_beli = (float)global.jisi_beli;
@@ -65,9 +69,11 @@ public class DataMgr : MonoBehaviour {
 
             random_arm = (float)global.random_arm;
             random_food = (float)global.random_food;
-            random_popu = (float)global.random_popu;
             random_beli = (float)global.random_beli;
             random_tech = (float)global.random_tech;
+
+            random_popu_c = (float)global.random_popu_c;
+            random_popu_k = (float)global.random_popu_k;
         }
         UIMgr._instance.mainUI.SetAttr();
     }
@@ -76,7 +82,7 @@ public class DataMgr : MonoBehaviour {
     {
         float _popu = popu;
         float _food = food;
-        popu += _popu * random_popu;
+        //popu += _popu * random_popu;
         food += _popu * random_food;
         UIMgr._instance.mainUI.SetAttr();
     }
@@ -86,14 +92,31 @@ public class DataMgr : MonoBehaviour {
         float _popu = popu;
         float _food = food;
         food += _popu * caiji_food;
+        if (food < 0)
+        {
+            popu += -food * random_popu_k + random_popu_c;
+            food = 0;
+        }
         UIMgr._instance.mainUI.SetAttr();
     }
     public void OnHunt(NotifyEvent _event = null)
     {
         float _food = food;
         float _popu = popu;
-        food += _popu * shoulie_food;
-        popu += _popu * shoulie_popu;
+        float _arm = arm;
+
+        float add_arm = _popu * shoulie_arm;
+        if (Mathf.Abs(add_arm) > _arm)
+        {
+            add_arm = -_arm;
+        }
+        arm += add_arm;
+        float add_popu = 0;
+        add_popu = - (_arm + add_arm) * 10 * shoulie_popu + _popu * shoulie_popu;
+        popu += add_popu;
+        float add_food = 0;
+        add_food = -add_popu * shoulie_food - add_arm * 2 * shoulie_food; 
+        food += add_food;
         UIMgr._instance.mainUI.SetAttr();
     }
     public void OnForge(NotifyEvent _event = null)
@@ -110,8 +133,8 @@ public class DataMgr : MonoBehaviour {
         float _food = food;
         float _popu = popu;
         float _beli = beli;
-        beli += _popu * jisi_beli;
-        food += _food * jisi_food;
+        beli += jisi_beli;
+        food += jisi_food;
         UIMgr._instance.mainUI.SetAttr();
     }
 
@@ -122,7 +145,7 @@ public class DataMgr : MonoBehaviour {
         float _arm = arm;
         float _tech = tech;
         food += _popu * random_food * (float)op.food;
-        popu += _popu * random_popu * (float)op.popu;
+        popu += _popu + (float)op.popu;
         beli += _popu * random_beli * (float)op.beli;
         arm += _popu * random_arm * (float)op.arm;
         tech += _popu * random_tech * (float)op.tech;
@@ -139,14 +162,17 @@ public class DataMgr : MonoBehaviour {
             case "random_food":
                 random_food = buffNum;
                 break;
-            case "random_popu":
-                random_popu = buffNum;
-                break;
             case "random_beli":
                 random_beli = buffNum;
                 break;
             case "random_tech":
                 random_tech = buffNum;
+                break;
+            case "random_popu_c":
+                random_popu_c = buffNum;
+                break;
+            case "random_popu_k":
+                random_popu_k = buffNum;
                 break;
             default:
                 break;

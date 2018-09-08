@@ -24,6 +24,7 @@ public class SerializGlobal : SerializConfigClass
     public double caiji_food;
     public double dazao_arm;
     public double dazao_food;
+    public double shoulie_arm;
     public double shoulie_food;
     public double shoulie_popu;
     public double jisi_beli;

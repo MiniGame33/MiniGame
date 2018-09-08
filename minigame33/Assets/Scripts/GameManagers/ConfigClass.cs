@@ -28,15 +28,17 @@ public class Global : ConfigClass
     public double caiji_food;
     public double dazao_arm;
     public double dazao_food;
+    public double shoulie_arm;
     public double shoulie_food;
     public double shoulie_popu;
     public double jisi_beli;
     public double jisi_food;
     public double random_arm;
     public double random_food;
-    public double random_popu;
     public double random_beli;
     public double random_tech;
+    public double random_popu_c;
+    public double random_popu_k;
 }
 
 [Serializable]
