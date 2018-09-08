@@ -84,6 +84,11 @@ public class DataMgr : MonoBehaviour {
         float _food = food;
         //popu += _popu * random_popu;
         food += _popu * random_food;
+        if (food < 0)
+        {
+            popu += -food * random_popu_k + random_popu_c;
+            food = 0;
+        }
         UIMgr._instance.mainUI.SetAttr();
     }
 
@@ -92,12 +97,10 @@ public class DataMgr : MonoBehaviour {
         float _popu = popu;
         float _food = food;
         food += _popu * caiji_food;
-        if (food < 0)
-        {
-            popu += -food * random_popu_k + random_popu_c;
-            food = 0;
-        }
         UIMgr._instance.mainUI.SetAttr();
+        DailyEvent dailyEventCfg = _event.Details as DailyEvent;
+        UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit("EventHide", this);
     }
     public void OnHunt(NotifyEvent _event = null)
     {
@@ -118,24 +121,41 @@ public class DataMgr : MonoBehaviour {
         add_food = -add_popu * shoulie_food - add_arm * 2 * shoulie_food; 
         food += add_food;
         UIMgr._instance.mainUI.SetAttr();
+        DailyEvent dailyEventCfg = _event.Details as DailyEvent;
+        UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit("EventHide", this);
     }
     public void OnForge(NotifyEvent _event = null)
     {
         float _arm = arm;
         float _food = food;
         float _popu = popu;
+        if (_food + _food * dazao_food < 0)
+        {
+            return;
+        }
         arm += _popu * dazao_arm;
         food += _food * dazao_food;
         UIMgr._instance.mainUI.SetAttr();
+        DailyEvent dailyEventCfg = _event.Details as DailyEvent;
+        UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit("EventHide", this);
     }
     public void OnSacrifice(NotifyEvent _event = null)
     {
         float _food = food;
         float _popu = popu;
         float _beli = beli;
+        if (_food + jisi_food < 0)
+        {
+            return;
+        }
         beli += jisi_beli;
         food += jisi_food;
         UIMgr._instance.mainUI.SetAttr();
+        DailyEvent dailyEventCfg = _event.Details as DailyEvent;
+        UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit("EventHide", this);
     }
 
     public void OnRandomEvent(Option op) {
@@ -145,7 +165,7 @@ public class DataMgr : MonoBehaviour {
         float _arm = arm;
         float _tech = tech;
         food += _popu * random_food * (float)op.food;
-        popu += _popu + (float)op.popu;
+        popu += (float)op.popu;
         beli += _popu * random_beli * (float)op.beli;
         arm += _popu * random_arm * (float)op.arm;
         tech += _popu * random_tech * (float)op.tech;

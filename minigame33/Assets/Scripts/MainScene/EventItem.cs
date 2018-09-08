@@ -26,8 +26,7 @@ public class EventItem : MonoBehaviour {
 
 	private void OnMouseDown()
     {
-        NotifacitionCenter.getInstance().Emit("EventHide", this);
-        UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
-        NotifacitionCenter.getInstance().Emit(dailyEventCfg.eventNotify,this);
+        NotifyEvent _notifyEvent = new NotifyEvent(dailyEventCfg.eventNotify,this, dailyEventCfg);
+        NotifacitionCenter.getInstance().Emit(dailyEventCfg.eventNotify,this, _notifyEvent);
     }
 }

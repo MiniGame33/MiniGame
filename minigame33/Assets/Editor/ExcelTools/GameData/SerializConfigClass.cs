@@ -31,9 +31,10 @@ public class SerializGlobal : SerializConfigClass
     public double jisi_food;
     public double random_arm;
     public double random_food;
-    public double random_popu;
     public double random_beli;
     public double random_tech;
+    public double random_popu_c;
+    public double random_popu_k;
 }
 
 [Serializable]
