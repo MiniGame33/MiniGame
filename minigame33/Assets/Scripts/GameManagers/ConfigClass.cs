@@ -48,7 +48,6 @@ public class RandomEvent : ConfigClass
     public int opA;
     public int opB;
     public int opC;
-    public int opD;
 }
 
 [Serializable]
@@ -65,6 +64,8 @@ public class Option : ConfigClass
     public double buff_num1;
     public string buff2;
     public double buff_num2;
+    public string unlock;
+    public double unlock_num;
 }
 
 [Serializable]

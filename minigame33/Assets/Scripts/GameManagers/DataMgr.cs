@@ -48,6 +48,7 @@ public class DataMgr : MonoBehaviour {
         if (CfgTabelData.GetInstance().GetCfgTabelByName("Global") != null)
         {
             global = CfgTabelData.GetInstance().GetCfgTabelByName("Global").getDataByID(1) as Global;
+
             popu = (float)global.initPopu;
             food = (float)global.initFood;
             arm = (float)global.initArm;
@@ -125,6 +126,58 @@ public class DataMgr : MonoBehaviour {
         beli += _popu * random_beli * (float)op.beli;
         arm += _popu * random_arm * (float)op.arm;
         tech += _popu * random_tech * (float)op.tech;
+        SetBuff(op.buff1, (float)op.buff_num1);
+        SetBuff(op.buff2, (float)op.buff_num2);
         UIMgr._instance.mainUI.SetAttr();
+    }
+    public void SetBuff(string buffName,float buffNum) {
+        switch (buffName)
+        {
+            case "random_arm":
+                random_arm = buffNum;
+                break;
+            case "random_food":
+                random_food = buffNum;
+                break;
+            case "random_popu":
+                random_popu = buffNum;
+                break;
+            case "random_beli":
+                random_beli = buffNum;
+                break;
+            case "random_tech":
+                random_tech = buffNum;
+                break;
+            default:
+                break;
+        }
+    }
+    public bool CheckUnlock(string unlock,float unlock_num) {
+        switch (unlock)
+        {
+            case "popu":
+                if (popu < unlock_num)
+                    return false;
+                break;
+            case "food":
+                if (food < unlock_num)
+                    return false;
+                break;
+            case "arm":
+                if (arm < unlock_num)
+                    return false;
+                break;
+            case "tech":
+                if (tech < unlock_num)
+                    return false;
+                break;
+            case "beli":
+                if (beli < unlock_num)
+                    return false;
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

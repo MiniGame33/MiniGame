@@ -17,6 +17,7 @@ public class EventMgr : MonoBehaviour {
     public CfgTabelData.CfgDataList randomEventCfg;
     public CfgTabelData.CfgDataList optionCfg;
 
+    public int randomEventId = 0;
     public List<int> randomList = new List<int> { 0,0,0,0,0,0,0};
     private void OnEnable()
 	{
@@ -45,7 +46,7 @@ public class EventMgr : MonoBehaviour {
 	void Update () {
         if (checkRandomEvent&&
             Vector3.Distance(randomEvent.transform.position, player.transform.position) < 1) {
-            StartRandomEvent();
+            StartRandomEvent(randomEventId);
         }
     }
 
@@ -85,6 +86,7 @@ public class EventMgr : MonoBehaviour {
             return;
         }
         checkRandomEvent = true;
+        randomEventId = process.dayRandom;
         randomEvent.SetActive(true);
         randomEvent.transform.position = randomPos.position;
         randomEvent.transform.rotation = randomPos.rotation;
@@ -98,12 +100,13 @@ public class EventMgr : MonoBehaviour {
             PlayerMgr._instance.EndRandomEvent();
             return;
         }
-        StartRandomEvent();
+        randomEventId = process.nightRandom;
+        StartRandomEvent(randomEventId);
     }
 
-    public void StartRandomEvent(NotifyEvent _event = null) {
+    public void StartRandomEvent(int _id) {
         checkRandomEvent = false;
-        UIMgr._instance.mainUI.randomEventPanel.Show(randomEventCfg.getDataByID(1) as RandomEvent);
+        UIMgr._instance.mainUI.randomEventPanel.Show(randomEventCfg.getDataByID(_id) as RandomEvent);
         PlayerMgr._instance.needRote = false;
     }
 

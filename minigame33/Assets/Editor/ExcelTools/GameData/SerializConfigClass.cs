@@ -44,7 +44,6 @@ public class SerializRandomEvent : SerializConfigClass
     public int opA;
     public int opB;
     public int opC;
-    public int opD;
 }
 
 [Serializable]
@@ -61,6 +60,8 @@ public class SerializOption : SerializConfigClass
     public double buff_num1;
     public string buff2;
     public double buff_num2;
+    public string unlock;
+    public double unlock_num;
 }
 
 [Serializable]

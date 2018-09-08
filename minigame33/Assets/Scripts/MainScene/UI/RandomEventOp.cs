@@ -19,7 +19,17 @@ public class RandomEventOp : MonoBehaviour {
 
     public void Show(Option option) {
         op = option;
+        gameObject.SetActive(false);
+        if (op == null)
+        {
+            return;
+        }
+        if (!DataMgr._instance.CheckUnlock(op.unlock,(float)op.unlock_num))
+        {
+            return;
+        }
         opDesc.text = option.desc;
+        gameObject.SetActive(true);
     }
 
     public void OnClick() {
