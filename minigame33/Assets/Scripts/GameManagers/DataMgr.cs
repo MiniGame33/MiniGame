@@ -115,7 +115,7 @@ public class DataMgr : MonoBehaviour {
         }
         arm += add_arm;
         float add_popu = 0;
-        add_popu = - (_arm + add_arm) * 10 * shoulie_popu + _popu * shoulie_popu;
+        add_popu = (_arm + add_arm) * 10 * shoulie_popu + _popu * shoulie_popu;
         popu += add_popu;
         float add_food = 0;
         add_food = -add_popu * shoulie_food - add_arm * 2 * shoulie_food; 

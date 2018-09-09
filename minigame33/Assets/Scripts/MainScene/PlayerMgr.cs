@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 public class PlayerMgr : MonoBehaviour {
     public static PlayerMgr _instance;
 
@@ -84,6 +86,11 @@ public class PlayerMgr : MonoBehaviour {
         {
             DataMgr._instance.DailyRun();
         }
+        if (day >= _processCfg.getData().Count)
+        {
+            GameOver((int)ResultType.win);
+            return;
+        }
         day++;
         isDay = true;
         needRote = true;
@@ -129,5 +136,10 @@ public class PlayerMgr : MonoBehaviour {
         {
             SetNightDaily();
         }
+    }
+
+    public void GameOver(int _result) {
+        GameResult.GetInstance().SetResult(_result);
+        SceneManager.LoadScene("GameOver");
     }
 }

@@ -73,6 +73,10 @@ public class MainUI : MonoBehaviour {
         arm.text = ((int)DataMgr._instance.arm).ToString();
         tech.text = ((int)DataMgr._instance.tech).ToString();
         beli.text = ((int)DataMgr._instance.beli).ToString();
+        if ((int)DataMgr._instance.popu <= 0)
+        {
+            PlayerMgr._instance.GameOver((int)ResultType.lose_popu);
+        }
     }
 
     public void ShowEventPanel(DailyEvent dailyEvent) {
