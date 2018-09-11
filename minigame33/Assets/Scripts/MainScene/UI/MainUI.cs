@@ -75,6 +75,7 @@ public class MainUI : MonoBehaviour {
         beli.text = ((int)DataMgr._instance.beli).ToString();
         if ((int)DataMgr._instance.popu <= 0)
         {
+            gameObject.SetActive(false);
             PlayerMgr._instance.GameOver((int)ResultType.lose_popu);
         }
     }
