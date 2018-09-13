@@ -94,16 +94,20 @@ public class DataMgr : MonoBehaviour {
 
     public void OnGather(NotifyEvent _event = null)
     {
+        string reslutString = "获得食物";
         float _popu = popu;
         float _food = food;
         food += _popu * caiji_food;
+        reslutString += (_popu * caiji_food).ToString()+" ";
         UIMgr._instance.mainUI.SetAttr();
         DailyEvent dailyEventCfg = _event.Details as DailyEvent;
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
         NotifacitionCenter.getInstance().Emit("EventHide", this);
+        EventUI._instance.resultString = reslutString;
     }
     public void OnHunt(NotifyEvent _event = null)
     {
+        string reslutString = "损失武器";
         float _food = food;
         float _popu = popu;
         float _arm = arm;
@@ -114,20 +118,27 @@ public class DataMgr : MonoBehaviour {
             add_arm = -_arm;
         }
         arm += add_arm;
+        reslutString += (-add_arm).ToString() + " ";
+        reslutString += "损失人口";
         float add_popu = 0;
         add_popu = (_arm + add_arm) * 10 * shoulie_popu + _popu * shoulie_popu;
         popu += add_popu;
+        reslutString += (-add_popu).ToString() + " ";
+        reslutString += "获得食物";
         float add_food = 0;
         add_food = -add_popu * shoulie_food - add_arm * 2 * shoulie_food; 
         food += add_food;
+        reslutString += add_food.ToString() + " ";
         UIMgr._instance.mainUI.SetAttr();
         DailyEvent dailyEventCfg = _event.Details as DailyEvent;
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
         NotifacitionCenter.getInstance().Emit("EventHide", this);
         AudioMgr._instance.Play(AudioMgr._instance.huntBgm, false);
+        EventUI._instance.resultString = reslutString;
     }
     public void OnForge(NotifyEvent _event = null)
     {
+        string reslutString = "获得武器";
         float _arm = arm;
         float _food = food;
         float _popu = popu;
@@ -136,14 +147,19 @@ public class DataMgr : MonoBehaviour {
             return;
         }
         arm += _popu * dazao_arm;
+        reslutString += (_popu * dazao_arm).ToString() + " ";
+        reslutString += "损失食物";
         food += _food * dazao_food;
+        reslutString += (-_food * dazao_food).ToString() + " ";
         UIMgr._instance.mainUI.SetAttr();
         DailyEvent dailyEventCfg = _event.Details as DailyEvent;
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
         NotifacitionCenter.getInstance().Emit("EventHide", this);
+        EventUI._instance.resultString = reslutString;
     }
     public void OnSacrifice(NotifyEvent _event = null)
     {
+        string reslutString = "获得信仰";
         float _food = food;
         float _popu = popu;
         float _beli = beli;
@@ -152,11 +168,15 @@ public class DataMgr : MonoBehaviour {
             return;
         }
         beli += jisi_beli;
+        reslutString += jisi_beli.ToString() + " ";
+        reslutString += "损失食物";
         food += jisi_food;
+        reslutString += (-jisi_food).ToString() + " ";
         UIMgr._instance.mainUI.SetAttr();
         DailyEvent dailyEventCfg = _event.Details as DailyEvent;
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
         NotifacitionCenter.getInstance().Emit("EventHide", this);
+        EventUI._instance.resultString = reslutString;
     }
 
     public void OnRandomEvent(Option op) {

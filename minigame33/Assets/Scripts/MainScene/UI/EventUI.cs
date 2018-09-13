@@ -7,7 +7,10 @@ public class EventUI : MonoBehaviour {
     public Text title;
     public Text desc;
     public Image imageBg;
-	private void Awake()
+    public GameObject resultGo;
+    public Text result;
+    public string resultString;
+    private void Awake()
 	{
         _instance = this;
 	}
@@ -26,6 +29,11 @@ public class EventUI : MonoBehaviour {
         Object sp = Resources.Load(dailyEvent.spriteName, typeof(Sprite));
         imageBg.sprite = sp as Sprite;
         gameObject.SetActive(true);
+        resultGo.SetActive(false);
+    }
+    public void ShowResult() {
+        resultGo.SetActive(true);
+        result.text = resultString;
     }
     public void Hide() {
         if (PlayerMgr._instance.isDay)
