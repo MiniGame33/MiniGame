@@ -89,6 +89,7 @@ public class Process : ConfigClass
     public int nightRandom;
     public int nightDaily1;
     public int nightDaily2;
+    public string story;
 }
 
 [Serializable]

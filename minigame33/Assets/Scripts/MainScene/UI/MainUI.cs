@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class MainUI : MonoBehaviour {
 
     public GameObject eventLabel;
+    public GameObject storyGo;
+    public Text storyLabel;
     public EventUI eventPanel;
     public UIDay dayPanel;
     public UINight nightPanel;
@@ -94,5 +96,25 @@ public class MainUI : MonoBehaviour {
     {
         dayPanel.gameObject.SetActive(true);
         nightPanel.gameObject.SetActive(false);
+    }
+    public void ShowStory() {
+        Process process = PlayerMgr._instance._processCfg.getDataByID(PlayerMgr._instance.day) as Process;
+        if (process.story != "")
+        {
+            storyGo.SetActive(true);
+            storyLabel.text = process.story;
+            AudioMgr._instance.Play(AudioMgr._instance.huntBgm, false);
+            Invoke("HideStory", 5);
+        }
+        else
+        {
+            nightPanel.nextDayBtn.SetActive(true);
+        }
+    }
+
+    public void HideStory() {
+        storyGo.SetActive(false);
+        nightPanel.nextDayBtn.SetActive(true);
+        AudioMgr._instance.Play(AudioMgr._instance.mainBgm, true);
     }
 }

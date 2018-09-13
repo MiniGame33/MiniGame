@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.minigame33.Plugins", "UnityVS.minigame33.Plugins.csproj", "{B8683B96-7DA8-1E2F-C741-B720E99B73FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.minigame33", "UnityVS.minigame33.csproj", "{797C6000-028C-EC12-442C-A0B9579A7810}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.minigame33.Editor", "UnityVS.minigame33.Editor.csproj", "{046FF40C-07A6-43B5-17A9-FD5355DA34F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8683B96-7DA8-1E2F-C741-B720E99B73FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8683B96-7DA8-1E2F-C741-B720E99B73FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8683B96-7DA8-1E2F-C741-B720E99B73FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8683B96-7DA8-1E2F-C741-B720E99B73FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797C6000-028C-EC12-442C-A0B9579A7810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797C6000-028C-EC12-442C-A0B9579A7810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797C6000-028C-EC12-442C-A0B9579A7810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797C6000-028C-EC12-442C-A0B9579A7810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{046FF40C-07A6-43B5-17A9-FD5355DA34F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046FF40C-07A6-43B5-17A9-FD5355DA34F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046FF40C-07A6-43B5-17A9-FD5355DA34F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046FF40C-07A6-43B5-17A9-FD5355DA34F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

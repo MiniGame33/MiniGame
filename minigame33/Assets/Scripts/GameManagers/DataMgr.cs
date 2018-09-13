@@ -124,6 +124,7 @@ public class DataMgr : MonoBehaviour {
         DailyEvent dailyEventCfg = _event.Details as DailyEvent;
         UIMgr._instance.mainUI.ShowEventPanel(dailyEventCfg);
         NotifacitionCenter.getInstance().Emit("EventHide", this);
+        AudioMgr._instance.Play(AudioMgr._instance.huntBgm, false);
     }
     public void OnForge(NotifyEvent _event = null)
     {

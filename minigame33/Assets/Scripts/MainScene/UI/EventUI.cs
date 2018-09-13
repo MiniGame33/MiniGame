@@ -34,8 +34,9 @@ public class EventUI : MonoBehaviour {
         }
         else
         {
-            UINight._instance.nextDayBtn.SetActive(true);
+            UIMgr._instance.mainUI.ShowStory();
         }
+        AudioMgr._instance.Play(AudioMgr._instance.mainBgm,true);
         gameObject.SetActive(false);
     }
 }

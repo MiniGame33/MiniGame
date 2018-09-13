@@ -99,6 +99,7 @@ public class PlayerMgr : MonoBehaviour {
         mainBgNight.transform.DOLocalMove(new Vector3(0,35,0),2f);
         UIMgr._instance.mainUI.OnEnterDay();
         SetDayRandomEvent();
+        AudioMgr._instance.Play(AudioMgr._instance.mainBgm,true);
     }
     public void SetDayRandomEvent() {
         EventMgr._instance.SetDayRandomEvent();
