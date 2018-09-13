@@ -39,12 +39,12 @@ public class EventUI : MonoBehaviour {
         if (PlayerMgr._instance.isDay)
         {
             NotifacitionCenter.getInstance().Emit("OnEnterNight", this);
+            AudioMgr._instance.Play(AudioMgr._instance.mainBgm, true);
         }
         else
         {
             UIMgr._instance.mainUI.ShowStory();
         }
-        AudioMgr._instance.Play(AudioMgr._instance.mainBgm,true);
         gameObject.SetActive(false);
     }
 }

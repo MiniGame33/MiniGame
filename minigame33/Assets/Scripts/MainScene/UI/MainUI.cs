@@ -103,11 +103,12 @@ public class MainUI : MonoBehaviour {
         {
             storyGo.SetActive(true);
             storyLabel.text = process.story;
-            AudioMgr._instance.Play(AudioMgr._instance.huntBgm, false);
+            AudioMgr._instance.Play(AudioMgr._instance.storyBgm, false);
             Invoke("HideStory", 5);
         }
         else
         {
+            AudioMgr._instance.Play(AudioMgr._instance.mainBgm, true);
             nightPanel.nextDayBtn.SetActive(true);
         }
     }
