@@ -113,6 +113,9 @@ public class Login : MonoBehaviour
     }
 
     public void action3() {
+        p1.SetActive(false);
+        p2.SetActive(false);
+        p3.SetActive(false);
         startface.SetActive(true);
     }
 }
